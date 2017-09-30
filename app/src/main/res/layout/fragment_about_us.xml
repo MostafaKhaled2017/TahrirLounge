@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#244386"
+    >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <ImageView
+        android:contentDescription="Tahrir Lounge Logo"
+        android:id="@+id/imageView_tahrir_lounge"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/tahrir_lounge" />
+
+        <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Who we are?\n\nTahrir Lounge is one of the Goethe institute projects in Cairo, it aims at helping youth to discover their talents, and improving their creativity to contribute to the change for better future, through conducting various activities in different fields.\n\nIn addition the project is supporting youth initiatives and dynamic student activities which is seeking to play positive and active role in the society.\n\nThe project enriches the culture scene in the Egyptian society, by organizing various workshops and activities to build the capacity of the governmental employees in different cultural fields.\n\nIn addition, the project establishes partnerships with different governmental sector in a number of governorates, which reflects on creating rich culture environment for the Egyptian society.\n\nTahrir Lounge is a neutral project and all its activities are supported by German foreign office. The project works under the umbrella of the cultural agreement between Egypt and Germany."
+        android:scrollbars="vertical"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/imageView_tahrir_lounge"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp"
+        android:layout_marginTop="18dp"
+        android:textColor="@color/white"
+            android:textSize="15sp"
+            android:id="@+id/about_us_text_view" />
+</RelativeLayout>
+    </ScrollView>

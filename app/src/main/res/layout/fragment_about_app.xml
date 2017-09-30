@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#244386"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#244386"
+    >
+   <TextView
+        android:id="@+id/textView_of_about_app_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_and_margin_of_about_app_text"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:text="This App is for Tahrir Lounge audience to Keep them updated with new events and workshops ."
+        android:textSize="@dimen/text_size_of_about_app"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp" />
+    <TextView
+        android:textAlignment="center"
+        android:id="@+id/textView_of_about_app_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_of_about_app"
+        android:padding="@dimen/padding_and_margin_of_about_app_text"
+        android:layout_below="@id/textView_of_about_app_1"
+        android:text="Developed during \n 'Android Course'"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_top_in_about_app_xlarge"/>
+    <TextView
+        android:textAlignment="center"
+        android:id="@+id/textView_of_about_app_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_of_about_app"
+        android:padding="@dimen/padding_and_margin_of_about_app_text"
+        android:layout_below="@id/textView_of_about_app_2"
+        android:text="Made by\nMostafa Khaled"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_top_in_about_app_xlarge"/>
+    <TextView
+        android:textAlignment="center"
+        android:id="@+id/textView_of_about_app_4"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_of_about_app"
+        android:padding="@dimen/padding_and_margin_of_about_app_text"
+        android:text="Mentor By \nAhmed Anas Rageh"
+        android:layout_below="@+id/textView_of_about_app_3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_top_in_about_app_xlarge"/>
+
+</RelativeLayout>
+    </ScrollView>

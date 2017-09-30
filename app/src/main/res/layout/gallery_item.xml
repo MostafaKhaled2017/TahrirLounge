@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
+    android:layout_marginLeft="10dp">
+<android.support.v7.widget.AppCompatImageView
+    android:layout_width="75dp"
+    android:layout_height="75dp"
+    android:scaleType="fitXY"
+    android:id="@+id/gallery_item_image"
+    android:layout_margin="5dp" />
+    <TextView
+        android:id="@+id/gallery_item_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testInfoVeryImportant"
+        android:textStyle="bold"
+        android:layout_below="@id/gallery_item_image"
+        android:layout_centerHorizontal="true"
+        android:textSize="12sp"
+        android:textColor="@color/white" />
+</RelativeLayout>

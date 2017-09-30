@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary_new">#05c3f9</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark_new">#0691b8</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="tahrir_lounge_color">#244386</color>
+    <color name="white">#fff</color>
+    <color name="background_color_of_cards_in_contact_us_and_events">#cceeff</color>
+    <color name="background_color_of_cards_in_contact_us_and_events_light">#e6f7ff</color>
+    <color name="background_of_images">#d1e0e0</color>
+</resources>

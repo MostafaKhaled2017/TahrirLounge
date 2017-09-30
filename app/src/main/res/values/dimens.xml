@@ -1,0 +1,39 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="height_of_button">100dp</dimen>
+    <dimen name="width_of_button">180dp</dimen>
+    <dimen name="margin_left_of_contact_us">80dp</dimen>
+    <dimen name="icon_of_contact_us_width_and_height">20dp</dimen>
+    <dimen name="padding_and_margin_of_about_app_text">5dp</dimen>
+    <dimen name="height_and_width_of_contact_us_icon">30dp</dimen>
+    <dimen name="margin_left_and_start_of_icons_of_contact_us">30dp</dimen>
+    <dimen name="width_and_height_of_image_in_home">128dp</dimen>
+    <dimen name="margin_left_and_start_of_image_in_home">30dp</dimen>
+    <dimen name="text_size_in_home">15sp</dimen>
+    <dimen name="margin_left_of_text_in_home">20dp</dimen>
+    <dimen name="margin_top_between_icons">60dp</dimen>
+    <dimen name="margin_top_of_contact_us">18dp</dimen>
+    <dimen name="text_size_of_contact_us">19sp</dimen>
+    <dimen name="margin_top_of_position_in_our_team">8dp</dimen>
+    <dimen name="card_height_in_our_team">150dp</dimen>
+    <dimen name="margin_top_of_text_view_in_home">50dp</dimen>
+    <dimen name="text_size_of_about_app">30sp</dimen>
+    <dimen name="margin_top_of_about_app_text_view">20dp</dimen>
+    <dimen name="text_in_aput_app_x_large">50sp</dimen>
+    <dimen name="margin_top_in_about_app_xlarge">30dp</dimen>
+    <dimen name="text_size_of_contact_us_xlarge">45sp</dimen>
+    <dimen name="margin_right_of_team_member_name">10dp</dimen>
+    <dimen name="text_size_in_our_team">35sp</dimen>
+    <dimen name="card_height_in_our_team_xlarge">200dp</dimen>
+    <dimen name="general_margins_in_our_team_xlarge">10dp</dimen>
+    <dimen name="distance_between_cards">50dp</dimen>
+    <dimen name="margin_right_and_start_in_events_card">3dp</dimen>
+    <dimen name="text_size_in_event_in_details">17sp</dimen>
+    <dimen name="margin_right_and_left_and_bottom_in_event_in_details">10dp</dimen>
+    <dimen name="margin_top_in_event_in_details">7dp</dimen>
+</resources>

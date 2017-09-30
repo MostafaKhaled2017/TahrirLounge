@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_about_us"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_contact_us"
+            android:icon="@drawable/contact_us"
+            android:title="Contact Us" />
+        <item
+            android:id="@+id/nav_facebook_page"
+            android:icon="@drawable/facebook"
+            android:title="Facebook Page" />
+        <item
+            android:id="@+id/nav_twitter"
+            android:title="Twitter"
+            android:icon="@drawable/twitter"/>
+        <item
+            android:id="@+id/nav_youtube"
+            android:icon="@drawable/youtube"
+            android:title="YouTube" />
+        <item
+            android:id="@+id/nav_our_partners"
+            android:icon="@drawable/our_partners"
+            android:title="Our Partners" />
+        <item
+            android:id="@+id/nav_our_team"
+            android:icon="@drawable/our_team"
+            android:title="Our Team" />
+        <item
+            android:id="@+id/nav_events"
+            android:icon="@drawable/events"
+            android:title="Events" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/gallery"
+            android:title="Gallery" />
+        <item
+            android:id="@+id/nav_about_app"
+            android:icon="@drawable/events"
+            android:title="About App" />
+    </group>
+</menu>
