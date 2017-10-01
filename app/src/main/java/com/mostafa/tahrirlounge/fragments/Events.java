@@ -61,6 +61,9 @@ public class Events extends Fragment {
         mContext = getActivity().getApplicationContext();
         // Initialize a new RequestQueue instance
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+         if(eventsList!=null){
+            eventsList.clear();
+        }
         // Initialize a new JsonArrayRequest instance
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
