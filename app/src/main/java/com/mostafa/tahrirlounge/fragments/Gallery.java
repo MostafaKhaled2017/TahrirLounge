@@ -59,9 +59,6 @@ public class Gallery extends Fragment {
         if(galleryList!=null){
             galleryList.clear();
         }
-    /*    if(galleryArrayList!=null){
-            galleryArrayList.clear();
-        }*/
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 mJSONURLString,
