@@ -90,7 +90,7 @@ public class Events extends Fragment {
                                 event.setEventDetails(eventDetails);
                                 event.setEventImage(eventImage);
                                 event.setEventInstractor(instractorName);
-                                eventsList.add(i, event);
+                                eventsList.add(event);
                             }
                             EventsAdapter adapter = new EventsAdapter(getActivity(),eventsList);
                             eventsRecyclerView.setAdapter(adapter);
