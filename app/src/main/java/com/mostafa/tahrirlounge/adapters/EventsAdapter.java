@@ -45,11 +45,11 @@ private List<EventPojoClass> eventsList;
             public void onClick(View v) {
                 Bundle eventData=new Bundle();
                 EventDetails eventDetailsFragment =new EventDetails();
-                eventData.putString("eventName",event.getEventName());
-                eventData.putString("eventDate",event.getEventDate());
+                eventData.putString("memberName",event.getEventName());
+                eventData.putString("memberPosition",event.getEventDate());
                 eventData.putString("eventDetails",event.getEventDetails());
                 eventData.putString("instructorName",event.getEventInstractor());
-                eventData.putString("eventImage",event.getEventImage());
+                eventData.putString("memberImage",event.getEventImage());
                 eventDetailsFragment.setArguments(eventData);
                 ((Activity) mContext).getFragmentManager().beginTransaction()
                         .replace(R.id.content_frame, eventDetailsFragment)

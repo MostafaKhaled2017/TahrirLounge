@@ -93,7 +93,7 @@
                 android:layout_marginLeft="@dimen/margin_left_of_contact_us"
                 android:layout_marginStart="@dimen/margin_left_of_contact_us"
                 android:layout_marginTop="@dimen/margin_top_of_contact_us"
-                android:text="El Bostan Street,Cairo"
+                android:text="5 El Bostan Street,Cairo"
                 android:textSize="@dimen/text_size_of_contact_us" />
             <android.support.v7.widget.AppCompatImageView
                 android:layout_width="@dimen/height_and_width_of_contact_us_icon"
@@ -113,7 +113,7 @@
                 android:layout_marginLeft="@dimen/margin_left_of_contact_us"
                 android:layout_marginStart="@dimen/margin_left_of_contact_us"
                 android:layout_marginTop="@dimen/margin_top_of_contact_us"
-                android:text="From 09:00 To 16:00"
+                android:text="From 10:00 To 18:00"
                 android:textSize="@dimen/text_size_of_contact_us" />
             <android.support.v7.widget.AppCompatButton
                 android:layout_width="180dp"
