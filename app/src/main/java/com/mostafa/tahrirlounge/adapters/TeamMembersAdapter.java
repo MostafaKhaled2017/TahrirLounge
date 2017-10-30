@@ -33,8 +33,7 @@ private List<TeamMemberPojoClass> teamMembersList;
         final TeamMemberPojoClass teamMember = teamMembersList.get(position);
         holder.memberName.setText(teamMember.getName());
         holder.memberPosition.setText(teamMember.getPosition());
-       // Glide.with(holder.memberImage.getContext()).load(teamMember.getImage()).placeholder(R.drawable.image_background).into(holder.memberImage);
-   //TODO
+        Glide.with(holder.memberImage.getContext()).load(teamMember.getImage()).placeholder(R.drawable.image_background).into(holder.memberImage);
     }
 
     @Override

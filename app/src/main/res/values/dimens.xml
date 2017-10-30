@@ -19,7 +19,7 @@
     <dimen name="margin_top_between_icons">60dp</dimen>
     <dimen name="margin_top_of_contact_us">18dp</dimen>
     <dimen name="text_size_of_contact_us">19sp</dimen>
-    <dimen name="margin_top_of_position_in_our_team">8dp</dimen>
+    <dimen name="margin_top_of_position_in_our_team">12dp</dimen>
     <dimen name="card_height_in_our_team">150dp</dimen>
     <dimen name="margin_top_of_text_view_in_home">50dp</dimen>
     <dimen name="text_size_of_about_app">30sp</dimen>
