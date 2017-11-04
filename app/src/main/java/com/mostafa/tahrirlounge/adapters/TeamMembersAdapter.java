@@ -15,6 +15,8 @@ import com.mostafa.tahrirlounge.pojoClasses.TeamMemberPojoClass;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class TeamMembersAdapter extends RecyclerView.Adapter<TeamMembersAdapter.OurTeamViewHolder> {
 private List<TeamMemberPojoClass> teamMembersList;
     private Context mContext;
@@ -48,13 +50,13 @@ private List<TeamMemberPojoClass> teamMembersList;
     class OurTeamViewHolder extends RecyclerView.ViewHolder{
         CardView ourTeamCard;
         TextView memberName, memberPosition;
-        ImageView memberImage;
+        CircleImageView memberImage;
         OurTeamViewHolder(View itemView) {
             super(itemView);
             ourTeamCard =(CardView) itemView.findViewById(R.id.our_team_card_view) ;
             memberName = (TextView) itemView.findViewById(R.id.team_member_name);
             memberPosition =(TextView) itemView.findViewById(R.id.team_member_position);
-            memberImage =(ImageView) itemView.findViewById(R.id.team_member_image);
+            memberImage =(CircleImageView) itemView.findViewById(R.id.team_member_image);
         }
 
     }
