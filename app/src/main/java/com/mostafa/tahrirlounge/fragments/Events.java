@@ -61,60 +61,66 @@ public class Events extends Fragment {
         mContext = getActivity().getApplicationContext();
         // Initialize a new RequestQueue instance
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-        if(eventsList!=null){
-            eventsList.clear();
-        }
         // Initialize a new JsonArrayRequest instance
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                Request.Method.GET,
-                mJSONURLString,
-                null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            // Loop through the array elements
-                            for (int i = 0; i < response.length(); i++) {
-                                // Get current json object
-                                JSONObject eventObject = response.getJSONObject(i);
+        if(eventsList.size()==0) {
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                    Request.Method.GET,
+                    mJSONURLString,
+                    null,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            try {
+                                // Loop through the array elements
+                                for (int i = 0; i < response.length(); i++) {
+                                    // Get current json object
+                                    JSONObject eventObject = response.getJSONObject(i);
 
-                                String eventName = eventObject.getString("eventName");
-                                String instractorName = eventObject.getString("eventInstractor");
-                                String eventDetails = eventObject.getString("eventDetails");
-                                String eventDate = eventObject.getString("eventDate");
-                                String eventImage = eventObject.getString("eventImage");
-                                //POJO class to store
-                                EventPojoClass event = new EventPojoClass();
-                                event.setEventName(eventName);
-                                event.setEventDate(eventDate);
-                                event.setEventDetails(eventDetails);
-                                event.setEventImage(eventImage);
-                                event.setEventInstractor(instractorName);
-                                eventsList.add(event);
+                                    String eventName = eventObject.getString("eventName");
+                                    String instractorName = eventObject.getString("eventInstractor");
+                                    String eventDetails = eventObject.getString("eventDetails");
+                                    String eventDate = eventObject.getString("eventDate");
+                                    String eventImage = eventObject.getString("eventImage");
+                                    //POJO class to store
+                                    EventPojoClass event = new EventPojoClass();
+                                    event.setEventName(eventName);
+                                    event.setEventDate(eventDate);
+                                    event.setEventDetails(eventDetails);
+                                    event.setEventImage(eventImage);
+                                    event.setEventInstractor(instractorName);
+                                    eventsList.add(event);
+                                }
+                                EventsAdapter adapter = new EventsAdapter(getActivity(), eventsList);
+                                eventsRecyclerView.setAdapter(adapter);
+                                adapter.notifyDataSetChanged();
+                                if (progress != null)
+                                    progress.setVisibility(View.GONE);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                if (progress != null)
+                                    progress.setVisibility(View.GONE);
                             }
-                            EventsAdapter adapter = new EventsAdapter(getActivity(),eventsList);
-                            eventsRecyclerView.setAdapter(adapter);
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
                             if (progress != null)
                                 progress.setVisibility(View.GONE);
-                            adapter.notifyDataSetChanged();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            if (progress != null)
-                                progress.setVisibility(View.GONE);
+                            Toast.makeText(mContext, "Check your connection and try again", Toast.LENGTH_SHORT).show();
+                            getFragmentManager().beginTransaction().replace(R.id.content_frame, new Home()).commit();
                         }
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        if (progress != null)
-                            progress.setVisibility(View.GONE);
-                        Toast.makeText(mContext, "Check your connection and try again", Toast.LENGTH_SHORT).show();
-                        getFragmentManager().beginTransaction().replace(R.id.content_frame,new Home()).commit();
-                    }
-                }
-        );
-        requestQueue.add(jsonArrayRequest);
+            );
+            requestQueue.add(jsonArrayRequest);
+        }
+        else{
+        EventsAdapter adapter = new EventsAdapter(getActivity(), eventsList);
+        eventsRecyclerView.setAdapter(adapter);
+            if (progress != null)
+                progress.setVisibility(View.GONE);
+        adapter.notifyDataSetChanged();}
         return myView;
     }
 }

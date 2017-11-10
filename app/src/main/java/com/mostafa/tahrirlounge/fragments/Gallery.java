@@ -55,10 +55,8 @@ public class Gallery extends Fragment {
         galleryRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));//TODO : autofit the number of col.
         progress = (ProgressBar) myView.findViewById(R.id.progressBar_of_gallery);
         mContext = getActivity().getApplicationContext();
+        if(galleryList.size()==0){
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-        if(galleryList!=null){
-            galleryList.clear();
-        }
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 mJSONURLString,
@@ -111,7 +109,14 @@ public class Gallery extends Fragment {
                 }
         );
         Log.v("Logging","Request URL -> " + mJSONURLString);
-        requestQueue.add(jsonArrayRequest);
+        requestQueue.add(jsonArrayRequest);}
+        else{//TODO: update data when it changed
+            GalleryAdapter adapter = new GalleryAdapter(getActivity(),galleryList);
+            galleryRecyclerView.setAdapter(adapter);
+            if (progress != null)
+                progress.setVisibility(View.GONE);
+            adapter.notifyDataSetChanged();
+        }
         return myView;
     }
 }

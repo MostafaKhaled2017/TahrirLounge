@@ -19,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.mostafa.tahrirlounge.R;
@@ -44,7 +45,7 @@ public class OurTeam extends Fragment{
     RecyclerView ourTeamRecyclerView;
     private Context mContext;
     ProgressBar progress;
-    private String url = "http://209.126.105.42:8001/iosapi/getAllTeamMembers";//TODO : make class for urls
+    private String url = "http://tahrirlounge.net/event/api/getAllTeamMembers";//TODO : make class for urls
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -57,30 +58,31 @@ public class OurTeam extends Fragment{
         // Get the application context
         mContext = getActivity().getApplicationContext();
         // Initialize a new RequestQueue instance
+        if(teamMembersList.size()==0){
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         if(teamMembersList!=null){
             teamMembersList.clear();
         }
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                         try {
-                            JSONArray teamMembersArray =  response.getJSONArray("teamMembersList");
-                            Log.v("Logging" , "response is:"+response.toString());
-                            Log.v("Logging" , "team members array list is: "+teamMembersArray);
-                            for (int i = 0; i< teamMembersArray.length(); i++){
-                                TeamMemberPojoClass teamMember=new TeamMemberPojoClass();
-                                JSONObject teamMemberObject = teamMembersArray.getJSONObject(i);
-                                String memberName = teamMemberObject.getString("name");
-                                String memberPosition = teamMemberObject.getString("position");
-                                String memberDescription = teamMemberObject.getString("description");
-                                String memberImage = teamMemberObject.getString("image");
+                            // Loop through the array elements
+                            for (int i = 0; i < response.length(); i++) {
+                                // Get current json object
+                                JSONObject teamMemberObject = response.getJSONObject(i);
+                                String memberName = teamMemberObject.getString("memberName");
+                                String memberPosition = teamMemberObject.getString("memberPosition");
+                                String memberDescription = teamMemberObject.getString("memberDecription");
+                                String memberImage = teamMemberObject.getString("imagePath");
                                 Log.v("Logging","member name is :"+memberName);
                                 Log.v("Logging","member position is :"+memberPosition);
                                 Log.v("Logging","member image is :"+memberImage);
-
+                                TeamMemberPojoClass teamMember=new TeamMemberPojoClass();
                                 teamMember.setName(memberName);
                                 teamMember.setPosition(memberPosition);
                                 teamMember.setDescription(memberDescription);
@@ -100,6 +102,7 @@ public class OurTeam extends Fragment{
                                 progress.setVisibility(View.GONE);
                         }
                     }
+                    //TODO : Caching , dimensions
                 }, new Response.ErrorListener() {
 
                     @Override
@@ -110,7 +113,15 @@ public class OurTeam extends Fragment{
                         getFragmentManager().beginTransaction().replace(R.id.content_frame,new Home()).commit();
                     }
                 });
-        requestQueue.add(jsObjRequest);
+        requestQueue.add(jsonArrayRequest);}
+        else{
+            TeamMembersAdapter adapter = new TeamMembersAdapter(getActivity(),teamMembersList);
+
+            ourTeamRecyclerView.setAdapter(adapter);
+            if (progress != null)
+                progress.setVisibility(View.GONE);
+            adapter.notifyDataSetChanged();
+        }
         return myView;
 }
 }

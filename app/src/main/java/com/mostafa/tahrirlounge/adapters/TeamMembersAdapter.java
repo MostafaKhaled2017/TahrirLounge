@@ -3,6 +3,7 @@ package com.mostafa.tahrirlounge.adapters;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.mostafa.tahrirlounge.R;
 import com.mostafa.tahrirlounge.pojoClasses.TeamMemberPojoClass;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -35,9 +37,14 @@ private List<TeamMemberPojoClass> teamMembersList;
         final TeamMemberPojoClass teamMember = teamMembersList.get(position);
         holder.memberName.setText(teamMember.getName());
         holder.memberPosition.setText(teamMember.getPosition());
-        Glide.with(holder.memberImage.getContext()).load(teamMember.getImage()).placeholder(R.drawable.image_background).into(holder.memberImage);
+        Picasso.with(holder.memberImage.getContext())
+                .load(teamMember.getImage())
+                .resize(150,150)
+                .centerCrop()
+                .placeholder(R.drawable.image_background)
+                .into(holder.memberImage);
+        Log.w("Logging","image link is : " + teamMember.getImage());
     }
-
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
