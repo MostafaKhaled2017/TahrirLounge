@@ -92,7 +92,6 @@ public class Events extends Fragment {
                                 }
                                 EventsAdapter adapter = new EventsAdapter(getActivity(), eventsList);
                                 eventsRecyclerView.setAdapter(adapter);
-                                adapter.notifyDataSetChanged();
                                 if (progress != null)
                                     progress.setVisibility(View.GONE);
 

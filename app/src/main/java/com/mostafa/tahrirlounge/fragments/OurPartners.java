@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +53,8 @@ public class OurPartners extends Fragment{
         // Initialize a new RequestQueue instance
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         partnersRecyclerView= (RecyclerView) myView.findViewById(R.id.partners_recycler_view);
+        partnersRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        progress = (ProgressBar) myView.findViewById(R.id.progressBar_of_partners);
         // Initialize a new JsonArrayRequest instance
         if(partnersList.size()==0) {
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
@@ -73,7 +77,7 @@ public class OurPartners extends Fragment{
                                     PartnersPojoClass partner = new PartnersPojoClass();
                                     partner.setName(partnerName);
                                     partner.setImage(partnerImage);
-
+                                    Log.v("Logging","Partner Image is : "+partnerImage);
                                     partnersList.add(partner);
                                 }
                                 PartnersAdapter adapter = new PartnersAdapter(getActivity(), partnersList);
