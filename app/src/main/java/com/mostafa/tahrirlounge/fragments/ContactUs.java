@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.mostafa.tahrirlounge.R;
-import com.mostafa.tahrirlounge.activities.MapsActivity;
+import com.mostafa.tahrirlounge.MapsActivity;
 
 /**
  * Created by Mostafa on 8/28/2017.

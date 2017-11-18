@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="horizontal"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+
 <RelativeLayout
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
         <TextView
@@ -19,10 +13,8 @@
             android:textAlignment="center"
             android:drawableTop="@drawable/facebook_round"
             android:textSize="@dimen/text_size_in_home"
-            android:layout_alignRight="@+id/about_us_icon_and_text_in_home"
-            android:layout_alignEnd="@id/about_us_icon_and_text_in_home"
-            android:layout_alignLeft="@id/about_us_icon_and_text_in_home"
-            android:layout_alignStart="@id/about_us_icon_and_text_in_home" />
+            android:layout_marginLeft="@dimen/margin_left_and_right_in_home"
+            android:layout_alignParentLeft="true"/>
         <TextView
             android:id="@+id/twitter_icon_and_text_in_home"
             android:text="Twitter"
@@ -32,8 +24,7 @@
             android:drawableTop="@drawable/twitter_round"
             android:textSize="@dimen/text_size_in_home"
             android:textAlignment="center"
-            android:layout_alignRight="@+id/contact_us_icon_and_text_in_home"
-            android:layout_alignEnd="@id/contact_us_icon_and_text_in_home" />
+            android:layout_centerHorizontal="true" />
         <TextView
             android:id="@+id/youtube_icon_and_text_in_home"
             android:text="YouTube"
@@ -42,51 +33,44 @@
             android:drawableTop="@drawable/youtube_round"
             android:textSize="@dimen/text_size_in_home"
             android:textAlignment="center"
-            android:layout_alignTop="@id/twitter_icon_and_text_in_home"
-            android:layout_alignLeft="@+id/events_icon_and_text_in_home"
-            android:layout_alignStart="@id/events_icon_and_text_in_home"
-            android:layout_alignBottom="@id/twitter_icon_and_text_in_home" />
+            android:layout_marginRight="@dimen/margin_left_and_right_in_home"
+            android:layout_marginTop="@dimen/margin_top_of_text_view_in_home"
+            android:layout_alignParentRight="true"/>
         <TextView
-            android:id="@id/about_us_icon_and_text_in_home"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
+            android:id="@+id/about_us_icon_and_text_in_home"
             android:text="About Us"
-            android:layout_marginTop="@dimen/margin_top_between_icons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/about_us"
             android:textSize="@dimen/text_size_in_home"
             android:textAlignment="center"
-            android:layout_below="@id/facebook_icon_and_text_in_home"
-            android:layout_marginLeft="@dimen/margin_left_and_start_of_image_in_home"
-            android:layout_marginStart="@dimen/margin_left_and_start_of_image_in_home" />
+            android:layout_alignTop="@+id/contact_us_icon_and_text_in_home"
+            android:layout_alignLeft="@+id/facebook_icon_and_text_in_home"
+            android:layout_alignStart="@+id/facebook_icon_and_text_in_home" />
         <TextView
-            android:id="@id/contact_us_icon_and_text_in_home"
+            android:id="@+id/contact_us_icon_and_text_in_home"
             android:text="Contact Us"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/contact_us"
             android:textSize="@dimen/text_size_in_home"
+            android:layout_marginTop="@dimen/margin_top_between_icons"
             android:textAlignment="center"
-            android:layout_alignLeft="@+id/our_partners_icon_and_text_in_home"
-            android:layout_alignStart="@id/our_partners_icon_and_text_in_home"
-            android:layout_alignTop="@id/about_us_icon_and_text_in_home" />
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/twitter_icon_and_text_in_home"/>
         <TextView
-            android:id="@id/our_partners_icon_and_text_in_home"
+            android:id="@+id/our_partners_icon_and_text_in_home"
             android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
             android:text="Our partners"
             android:layout_marginTop="@dimen/margin_top_between_icons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:drawableTop="@drawable/our_partners"
             android:textSize="@dimen/text_size_in_home"
-            android:layout_toRightOf="@+id/our_team_icon_and_text_in_home"
-            android:layout_toEndOf="@id/our_team_icon_and_text_in_home"
             android:textAlignment="center"
-            android:layout_below="@id/contact_us_icon_and_text_in_home"
-            android:layout_marginLeft="@dimen/margin_left_and_start_of_image_in_home"
-            android:layout_marginStart="@dimen/margin_left_and_start_of_image_in_home" />
+            android:layout_below="@id/contact_us_icon_and_text_in_home" />
         <TextView
             android:id="@+id/our_team_icon_and_text_in_home"
             android:text="Our Team"
@@ -95,37 +79,33 @@
             android:textAlignment="center"
             android:drawableTop="@drawable/our_team"
             android:textSize="@dimen/text_size_in_home"
-            android:layout_alignBaseline="@id/our_partners_icon_and_text_in_home"
-            android:layout_alignBottom="@id/our_partners_icon_and_text_in_home"
-            android:layout_alignLeft="@id/about_us_icon_and_text_in_home"
-            android:layout_alignStart="@id/about_us_icon_and_text_in_home"/>
+            android:layout_alignBaseline="@+id/our_partners_icon_and_text_in_home"
+            android:layout_alignBottom="@+id/our_partners_icon_and_text_in_home"
+            android:layout_alignRight="@+id/about_us_icon_and_text_in_home"
+            android:layout_alignEnd="@+id/about_us_icon_and_text_in_home" />
         <TextView
-            android:id="@id/events_icon_and_text_in_home"
+            android:id="@+id/events_icon_and_text_in_home"
             android:text="Events"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:drawableTop="@drawable/events"
             android:textSize="@dimen/text_size_in_home"
-            android:layout_alignBottom="@id/contact_us_icon_and_text_in_home"
-            android:layout_alignLeft="@+id/gallery_icon_and_text_in_home"
-            android:layout_alignStart="@id/gallery_icon_and_text_in_home"
-            android:layout_alignTop="@id/contact_us_icon_and_text_in_home" />
+            android:layout_marginRight="@dimen/margin_left_and_right_in_home"
+            android:layout_marginTop="55dp"
+            android:layout_below="@id/youtube_icon_and_text_in_home"
+            android:layout_alignParentRight="true"/>
         <TextView
-            android:id="@id/gallery_icon_and_text_in_home"
-            android:layout_below="@id/events_icon_and_text_in_home"
+            android:id="@+id/gallery_icon_and_text_in_home"
+            android:layout_below="@+id/events_icon_and_text_in_home"
             android:text="Gallery"
-            android:layout_marginTop="@dimen/margin_top_between_icons"
+            android:layout_marginRight="@dimen/margin_left_and_right_in_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:layout_marginTop="@dimen/margin_top_between_icons"
             android:drawableTop="@drawable/gallery_round"
-            android:layout_toRightOf="@id/our_partners_icon_and_text_in_home"
-            android:layout_toEndOf="@id/our_partners_icon_and_text_in_home"
+            android:layout_alignParentRight="true"
             android:textSize="@dimen/text_size_in_home"
-            android:layout_marginLeft="35dp"
-            android:layout_marginStart="35dp" />
+ />
     </RelativeLayout>
-        </HorizontalScrollView>
-        </ScrollView>
-<!--TODO : make another home layout for larger screens-->

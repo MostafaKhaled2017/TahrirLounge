@@ -7,21 +7,21 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="height_of_button">100dp</dimen>
     <dimen name="width_of_button">180dp</dimen>
-    <dimen name="margin_left_of_contact_us">80dp</dimen>
+    <dimen name="margin_left_of_contact_us">15dp</dimen>
     <dimen name="icon_of_contact_us_width_and_height">20dp</dimen>
     <dimen name="padding_and_margin_of_about_app_text">5dp</dimen>
     <dimen name="height_and_width_of_contact_us_icon">30dp</dimen>
-    <dimen name="margin_left_and_start_of_icons_of_contact_us">30dp</dimen>
+    <dimen name="margin_left_and_start_of_icons_of_contact_us">25dp</dimen>
     <dimen name="width_and_height_of_image_in_home">128dp</dimen>
     <dimen name="margin_left_and_start_of_image_in_home">30dp</dimen>
     <dimen name="text_size_in_home">15sp</dimen>
     <dimen name="margin_left_of_text_in_home">20dp</dimen>
-    <dimen name="margin_top_between_icons">60dp</dimen>
+    <dimen name="margin_top_between_icons">45dp</dimen>
     <dimen name="margin_top_of_contact_us">18dp</dimen>
     <dimen name="text_size_of_contact_us">19sp</dimen>
-    <dimen name="margin_top_of_position_in_our_team">12dp</dimen>
+    <dimen name="margin_top_of_position_in_our_team">10dp</dimen>
     <dimen name="card_height_in_our_team">150dp</dimen>
-    <dimen name="margin_top_of_text_view_in_home">50dp</dimen>
+    <dimen name="margin_top_of_text_view_in_home">45dp</dimen>
     <dimen name="text_size_of_about_app">30sp</dimen>
     <dimen name="margin_top_of_about_app_text_view">20dp</dimen>
     <dimen name="text_in_aput_app_x_large">50sp</dimen>
@@ -36,4 +36,5 @@
     <dimen name="text_size_in_event_in_details">17sp</dimen>
     <dimen name="margin_right_and_left_and_bottom_in_event_in_details">10dp</dimen>
     <dimen name="margin_top_in_event_in_details">7dp</dimen>
+    <dimen name="margin_left_and_right_in_home">15dp</dimen>
 </resources>

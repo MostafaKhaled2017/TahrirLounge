@@ -23,36 +23,48 @@
         android:layout_marginBottom="25dp">
 
         <RelativeLayout
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/phone_icon"
+                android:layout_width="@dimen/height_and_width_of_contact_us_icon"
+                android:layout_height="@dimen/height_and_width_of_contact_us_icon"
+                android:src="@drawable/phone_icon"
+                android:layout_above="@+id/website_text"
+                android:layout_marginLeft="@dimen/margin_left_and_start_of_icons_of_contact_us"
+                android:layout_marginStart="@dimen/margin_left_and_start_of_icons_of_contact_us" />
 
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/phone_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/phone_icon"
                 android:layout_marginLeft="@dimen/margin_left_of_contact_us"
                 android:layout_marginStart="@dimen/margin_left_of_contact_us"
                 android:layout_marginTop="@dimen/margin_top_of_contact_us"
                 android:text="+20 127-433-3113"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_size_of_contact_us" />
-<android.support.v7.widget.AppCompatImageView
-    android:layout_width="@dimen/height_and_width_of_contact_us_icon"
-    android:layout_height="@dimen/height_and_width_of_contact_us_icon"
-    android:src="@drawable/phone_icon"
-    android:layout_above="@+id/website_text"
-    android:layout_marginLeft="@dimen/margin_left_and_start_of_icons_of_contact_us"
-    android:layout_marginStart="@dimen/margin_left_and_start_of_icons_of_contact_us" />
-
             <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/website_icon"
                 android:layout_width="@dimen/height_and_width_of_contact_us_icon"
                 android:layout_height="@dimen/height_and_width_of_contact_us_icon"
                 android:src="@drawable/website_icon"
                 android:layout_above="@+id/mail_text"
                 android:layout_marginLeft="@dimen/margin_left_and_start_of_icons_of_contact_us"
                 android:layout_marginStart="@dimen/margin_left_and_start_of_icons_of_contact_us" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="@dimen/height_and_width_of_contact_us_icon"
+                android:layout_height="@dimen/height_and_width_of_contact_us_icon"
+                android:id="@+id/mail_icon"
+                android:src="@drawable/mail_icon"
+                android:layout_marginLeft="@dimen/margin_left_and_start_of_icons_of_contact_us"
+                android:layout_alignBottom="@+id/mail_text" />
+
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/mail_text"
                 android:layout_width="wrap_content"
@@ -61,17 +73,12 @@
                 android:layout_marginLeft="@dimen/margin_left_of_contact_us"
                 android:layout_marginStart="@dimen/margin_left_of_contact_us"
                 android:layout_marginTop="@dimen/margin_top_of_contact_us"
-                android:layout_marginRight="40dp"
                 android:textStyle="bold"
+                android:paddingRight="5dp"
+                android:layout_toRightOf="@id/mail_icon"
                 android:text="tahrirlounge@gmail.com"
                 android:textSize="@dimen/text_size_of_contact_us" />
-            <android.support.v7.widget.AppCompatImageView
-                android:layout_width="@dimen/height_and_width_of_contact_us_icon"
-                android:layout_height="@dimen/height_and_width_of_contact_us_icon"
-                android:src="@drawable/mail_icon"
-                android:layout_alignBottom="@+id/mail_text"
-                android:layout_alignLeft="@+id/appCompatImageView"
-                android:layout_alignStart="@+id/appCompatImageView" />
+
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/website_text"
                 android:textStyle="bold"
@@ -81,9 +88,17 @@
                 android:layout_marginLeft="@dimen/margin_left_of_contact_us"
                 android:layout_marginStart="@dimen/margin_left_of_contact_us"
                 android:layout_marginTop="@dimen/margin_top_of_contact_us"
+                android:layout_toRightOf="@id/website_icon"
                 android:text="www.tahrirlounge.net"
                 android:textSize="@dimen/text_size_of_contact_us" />
-
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="@dimen/height_and_width_of_contact_us_icon"
+                android:layout_height="@dimen/height_and_width_of_contact_us_icon"
+                android:src="@drawable/location_icon"
+                android:layout_above="@+id/time_text"
+                android:layout_marginLeft="@dimen/margin_left_and_start_of_icons_of_contact_us"
+                android:layout_marginStart="@dimen/margin_left_and_start_of_icons_of_contact_us"
+                android:id="@+id/location_icon" />
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/location_text"
                 android:layout_width="wrap_content"
@@ -94,15 +109,17 @@
                 android:layout_marginStart="@dimen/margin_left_of_contact_us"
                 android:layout_marginTop="@dimen/margin_top_of_contact_us"
                 android:text="5 El Bostan Street,Cairo"
+                android:layout_toRightOf="@id/location_icon"
                 android:textSize="@dimen/text_size_of_contact_us" />
             <android.support.v7.widget.AppCompatImageView
                 android:layout_width="@dimen/height_and_width_of_contact_us_icon"
                 android:layout_height="@dimen/height_and_width_of_contact_us_icon"
-                android:src="@drawable/location_icon"
-                android:layout_above="@+id/time_text"
+                android:src="@drawable/time_icon"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/location_text"
+                android:id="@+id/time_icon"
                 android:layout_marginLeft="@dimen/margin_left_and_start_of_icons_of_contact_us"
-                android:layout_marginStart="@dimen/margin_left_and_start_of_icons_of_contact_us"
-                android:id="@+id/appCompatImageView" />
+                android:layout_marginStart="@dimen/margin_left_and_start_of_icons_of_contact_us" />
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/time_text"
                 android:layout_width="wrap_content"
@@ -113,6 +130,7 @@
                 android:layout_marginLeft="@dimen/margin_left_of_contact_us"
                 android:layout_marginStart="@dimen/margin_left_of_contact_us"
                 android:layout_marginTop="@dimen/margin_top_of_contact_us"
+                android:layout_toRightOf="@id/time_icon"
                 android:text="From 10:00 To 18:00"
                 android:textSize="@dimen/text_size_of_contact_us" />
             <android.support.v7.widget.AppCompatButton
@@ -128,14 +146,7 @@
                 android:textStyle="bold"
                 android:background="@drawable/new_button"
                 android:text="Map Location" />
-            <android.support.v7.widget.AppCompatImageView
-                android:layout_width="@dimen/height_and_width_of_contact_us_icon"
-                android:layout_height="@dimen/height_and_width_of_contact_us_icon"
-                android:src="@drawable/time_icon"
-                android:layout_marginTop="15dp"
-                android:layout_below="@+id/location_text"
-                android:layout_marginLeft="@dimen/margin_left_and_start_of_icons_of_contact_us"
-                android:layout_marginStart="@dimen/margin_left_and_start_of_icons_of_contact_us" />
+
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

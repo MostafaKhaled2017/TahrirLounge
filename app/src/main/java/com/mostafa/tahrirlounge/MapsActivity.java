@@ -1,4 +1,4 @@
-package com.mostafa.tahrirlounge.activities;
+package com.mostafa.tahrirlounge;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;

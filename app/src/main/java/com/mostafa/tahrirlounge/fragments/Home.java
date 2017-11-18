@@ -3,6 +3,7 @@ package com.mostafa.tahrirlounge.fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,10 +28,12 @@ public class Home extends Fragment{
     OurTeam ourTeam=new OurTeam();
     OurPartners ourPartners=new OurPartners();
     Gallery gallery=new Gallery();
+    NavigationView navigationView;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.fragment_home, container, false);
+        navigationView = (NavigationView) myView.findViewById(R.id.nav_view);
         facebookIconText = (TextView) myView.findViewById(R.id.facebook_icon_and_text_in_home);
         facebookIconText.setOnClickListener(new View.OnClickListener() {
             @Override

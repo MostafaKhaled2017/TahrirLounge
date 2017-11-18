@@ -1,6 +1,7 @@
 package com.mostafa.tahrirlounge.fragments;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -44,6 +45,7 @@ public class Events extends Fragment implements SwipeRefreshLayout.OnRefreshList
     RequestQueue requestQueue;
     private Context mContext;
     ProgressBar progress;
+    ProgressDialog progressDialog;
     private SwipeRefreshLayout swipeRefreshLayout;
     private String mJSONURLString = "http://tahrirlounge.net/event/api/events";//TODO : make class for urls
 
@@ -127,7 +129,9 @@ public class Events extends Fragment implements SwipeRefreshLayout.OnRefreshList
     }
 
     @Override
-    public void onRefresh() {//TODO:Check
+    public void onRefresh() {
+        progressDialog = ProgressDialog.show(getActivity(), null,
+                "Loading ...", true);
         eventsList = new ArrayList<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -158,29 +162,28 @@ public class Events extends Fragment implements SwipeRefreshLayout.OnRefreshList
                             }
                             EventsAdapter adapter = new EventsAdapter(getActivity(), eventsList);
                             eventsRecyclerView.setAdapter(adapter);
-                             if (progress != null)
-                                progress.setVisibility(View.GONE);
+                            if (progressDialog != null)
+                                progressDialog.dismiss();
+                            adapter.notifyDataSetChanged();
 
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            if (progress != null)
-                                progress.setVisibility(View.GONE);
+                            if (progressDialog != null)
+                                progressDialog.dismiss();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        if (progress != null)
-                            progress.setVisibility(View.GONE);
-                        Toast.makeText(mContext, "Check your connection and try again", Toast.LENGTH_SHORT).show();
-                        getFragmentManager().beginTransaction().replace(R.id.content_frame, new Home()).commit();
+                        if (progressDialog != null)
+                            progressDialog.dismiss();
+                        Toast.makeText(mContext, "failed to refresh", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
         requestQueue.add(jsonArrayRequest);
-        Toast.makeText(mContext, "Data refreshed  successfully", Toast.LENGTH_SHORT).show();
      if(swipeRefreshLayout.isRefreshing())
          swipeRefreshLayout.setRefreshing(false);
     }

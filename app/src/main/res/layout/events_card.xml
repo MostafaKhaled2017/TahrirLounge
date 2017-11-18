@@ -16,13 +16,14 @@
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/event_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
-            android:textSize="15sp"
             android:layout_marginBottom="5dp"
             android:text="ورشة صناعة الواقع"
+            android:textAlignment="center"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <android.support.v7.widget.AppCompatImageView
@@ -31,13 +32,12 @@
             android:layout_height="150dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/instructor_name"
             android:layout_centerVertical="true"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="7dp"
             android:background="#d1e0e0"
+            android:layout_marginTop="5dp"
             android:scaleType="fitXY" />
-        <!--TODO :Add borders to image and change its shape-->
+
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/instructor_name"
             android:layout_width="wrap_content"
@@ -48,6 +48,7 @@
             android:layout_marginEnd="@dimen/margin_right_and_start_in_events_card"
             android:layout_marginRight="@dimen/margin_right_and_start_in_events_card"
             android:text="المحاضر : "
+            android:layout_marginTop="5dp"
             android:textStyle="bold" />
 
         <android.support.v7.widget.AppCompatTextView
@@ -56,13 +57,13 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/event_date"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/event_image"
             android:layout_marginEnd="@dimen/margin_right_and_start_in_events_card"
             android:layout_marginRight="@dimen/margin_right_and_start_in_events_card"
-            android:paddingLeft="5dp"
+            android:layout_toRightOf="@id/event_image"
             android:maxLines="6"
+            android:paddingLeft="5dp"
             android:text="هذه الورشة من اهم الورش التي ستفيدك في حياتك كلها فهي ورشة مهمة جدا لك وستسفيد منها كثيرا هذه الورشة من اهم الورش التي ستفيدك في حياتك كلها فهي ورشة مهمة جدا لك وستسفيد منها كثيرا هذه الورشة من اهم الورش التي ستفيدك في حياتك كلها فهي ورشة مهمة جدا لك وستسفيد منها كثيرا هذه الورشة من اهم الورش التي ستفيدك في حياتك كلها فهي ورشة مهمة جدا لك وستسفيد منها كثيرا" />
-<!-- TODo :add horizontal scroll view to menue-->
+        <!-- TODo :add horizontal scroll view to menue-->
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/event_date"
             android:layout_width="wrap_content"

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.mostafa.tahrirlounge.R;
 
@@ -34,8 +35,17 @@ public class YouTube extends Fragment {
         View mainView =inflater.inflate(R.layout.fragment_youtube, container, false);
         webView = (WebView)mainView.findViewById(R.id.webview_youtube);
         webView.getSettings().setJavaScriptEnabled(true);
-        progress = ProgressDialog.show(getActivity(), null,
-                "Loading ..." , true);
+        progress=new ProgressDialog(getActivity()){
+            @Override
+            public void onBackPressed() {
+                progress.dismiss();
+                Toast.makeText(getActivity(), "You Canceled Loading Data", Toast.LENGTH_SHORT).show();
+                getFragmentManager().beginTransaction().replace(R.id.content_frame, new Home()).commit();
+            }
+        };
+        progress.setMessage("Loading...");
+        progress.show();
+        progress.setCancelable(true);
         if (webViewBundle != null)
         {
             webView.restoreState(webViewBundle);
@@ -47,6 +57,11 @@ public class YouTube extends Fragment {
             public void onPageFinished(WebView view, String url) {
                 if (progress != null)
                     progress.dismiss();
+            }
+            @Override
+            public void onPageCommitVisible(WebView view, String url) {
+                super.onPageCommitVisible(view, url);
+                progress.setCanceledOnTouchOutside(true);
             }
         });
         return mainView;
