@@ -35,7 +35,7 @@ public class ContactUs extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i=new Intent(getActivity(),MapsActivity.class);
+        i=new Intent(getActivity(),MapsActivity.class);
           startActivity(i);
 }
         });

@@ -37,7 +37,7 @@ import java.util.List;
  * Created by Mostafa on 8/28/2017.
  */
 
-public class Events extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class Events extends Fragment  {
     List<EventPojoClass> eventsList = new ArrayList<>();
     View myView;
     CardView mCardView;
@@ -45,8 +45,8 @@ public class Events extends Fragment implements SwipeRefreshLayout.OnRefreshList
     RequestQueue requestQueue;
     private Context mContext;
     ProgressBar progress;
-    ProgressDialog progressDialog;
-    private SwipeRefreshLayout swipeRefreshLayout;
+    // ProgressDialog progressDialog;
+   // private SwipeRefreshLayout swipeRefreshLayout;
     private String mJSONURLString = "http://tahrirlounge.net/event/api/events";//TODO : make class for urls
 
     public Events() {
@@ -60,8 +60,8 @@ public class Events extends Fragment implements SwipeRefreshLayout.OnRefreshList
         eventsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         progress = (ProgressBar) myView.findViewById(R.id.progressBar_of_events);
         mCardView = (CardView) myView.findViewById(R.id.card_view_of_events);
-        swipeRefreshLayout =(SwipeRefreshLayout) myView.findViewById(R.id.swipe_to_refresh_of_events);
-        swipeRefreshLayout.setOnRefreshListener(this);
+        // swipeRefreshLayout =(SwipeRefreshLayout) myView.findViewById(R.id.swipe_to_refresh_of_events);
+        //swipeRefreshLayout.setOnRefreshListener(this);
         // Get the application context
         mContext = getActivity().getApplicationContext();
         // Initialize a new RequestQueue instance
@@ -128,7 +128,7 @@ public class Events extends Fragment implements SwipeRefreshLayout.OnRefreshList
         return myView;
     }
 
-    @Override
+   /* @Override
     public void onRefresh() {
         progressDialog = ProgressDialog.show(getActivity(), null,
                 "Loading ...", true);
@@ -186,5 +186,5 @@ public class Events extends Fragment implements SwipeRefreshLayout.OnRefreshList
         requestQueue.add(jsonArrayRequest);
      if(swipeRefreshLayout.isRefreshing())
          swipeRefreshLayout.setRefreshing(false);
-    }
+    }*/
 }

@@ -55,6 +55,7 @@
                 android:text="ffffffff"
                 android:textAlignment="center"
                 android:textSize="15sp"
+                android:layout_marginBottom="5dp"
                 android:textStyle="bold" />
         </RelativeLayout>
     </RelativeLayout>
