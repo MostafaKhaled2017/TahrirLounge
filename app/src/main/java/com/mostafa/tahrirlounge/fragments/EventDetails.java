@@ -1,6 +1,7 @@
 package com.mostafa.tahrirlounge.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -56,6 +57,10 @@ public class EventDetails extends Fragment {
             instructor_name.setTypeface(custom_font);
             Glide.with(getActivity()).load(eventImage).placeholder(R.drawable.image_background).into(event_image);
         }else{
+            FragmentManager fm = getActivity().getFragmentManager();
+            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                fm.popBackStack();
+            }
             getFragmentManager().beginTransaction().replace(R.id.content_frame,new Home()).commit();
             Toast.makeText(getActivity(), "Error occured", Toast.LENGTH_SHORT).show();
         }

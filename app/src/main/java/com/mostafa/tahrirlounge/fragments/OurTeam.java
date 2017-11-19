@@ -1,6 +1,7 @@
 package com.mostafa.tahrirlounge.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -110,6 +111,10 @@ public class OurTeam extends Fragment{
                         if (progress != null)
                             progress.setVisibility(View.GONE);
                         Toast.makeText(mContext, "Check your connection and try again", Toast.LENGTH_SHORT).show();
+                        FragmentManager fm = getActivity().getFragmentManager();
+                        for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                            fm.popBackStack();
+                        }
                         getFragmentManager().beginTransaction().replace(R.id.content_frame,new Home()).commit();
                     }
                 });

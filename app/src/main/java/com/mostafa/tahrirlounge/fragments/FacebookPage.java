@@ -1,6 +1,7 @@
 package com.mostafa.tahrirlounge.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -43,12 +44,16 @@ public class FacebookPage extends Fragment {
            public void onBackPressed() {
                progress.dismiss();
                Toast.makeText(getActivity(), "You Canceled Loading Data", Toast.LENGTH_SHORT).show();
+               FragmentManager fm = getActivity().getFragmentManager();
+               for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                   fm.popBackStack();
+               }
                getFragmentManager().beginTransaction().replace(R.id.content_frame, new Home()).commit();
            }
        };
        progress.setMessage("Loading...");
+        progress.setCancelable(false);
         progress.show();
-        progress.setCancelable(true);
         webView.loadUrl("https://www.facebook.com/TahrirLounge/");//CHANGE
         webView.setWebViewClient(new WebViewClient() {
             public void onPageFinished(WebView view, String url) {
@@ -58,10 +63,8 @@ public class FacebookPage extends Fragment {
 
             @Override
             public void onPageCommitVisible(WebView view, String url) {
-                super.onPageCommitVisible(view, url);
                 progress.setCanceledOnTouchOutside(true);
             }
-
         });
         if(Build.VERSION.SDK_INT >=19){
             webView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
