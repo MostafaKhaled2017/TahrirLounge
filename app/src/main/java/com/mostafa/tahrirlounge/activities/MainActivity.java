@@ -1,5 +1,6 @@
 package com.mostafa.tahrirlounge.activities;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -89,11 +90,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .replace(R.id.content_frame,aboutUs)
                     .addToBackStack(null)
                     .commit();
-        }else if(id==R.id.nav_home){
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame,new Home())
-                    .addToBackStack(null)
-                    .commit();
         }else if(id==R.id.nav_our_partners){
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,ourPartners)
@@ -120,9 +116,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .addToBackStack(null)
                     .commit();
         }else if(id==R.id.nav_home){
+            FragmentManager fm = this.getFragmentManager();
+            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                fm.popBackStack();
+            }
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,home)
-                    .addToBackStack(null)
                     .commit();
         }else if(id==R.id.nav_about_app){
             fragmentManager.beginTransaction()
