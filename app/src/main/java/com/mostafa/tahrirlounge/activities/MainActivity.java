@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             } else {
                 super.onBackPressed();
             }
-
     }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -129,7 +128,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .addToBackStack(null)
                     .commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
