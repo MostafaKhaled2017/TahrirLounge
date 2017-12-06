@@ -3,6 +3,8 @@ package com.mostafa.tahrirlounge.fragments;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -35,7 +37,10 @@ public class YouTube extends Fragment {
                              Bundle savedInstanceState) {
         View mainView =inflater.inflate(R.layout.fragment_youtube, container, false);
         webView = (WebView)mainView.findViewById(R.id.webview_youtube);
-        webView.getSettings().setJavaScriptEnabled(true);
+        Uri uri = Uri.parse("https://www.youtube.com/user/Tahrirlounge");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+       /* webView.getSettings().setJavaScriptEnabled(true);
         progress=new ProgressDialog(getActivity()){
             @Override
             public void onBackPressed() {
@@ -67,11 +72,12 @@ public class YouTube extends Fragment {
             public void onPageCommitVisible(WebView view, String url) {
                 progress.setCanceledOnTouchOutside(true);
             }
-        });
+        });*/
         return mainView;
     }
-    public void onPause() {
-        super.onPause();
-        webViewBundle = new Bundle();
-        webView.saveState(webViewBundle);
-    }}
+    //public void onPause() {
+      //  super.onPause();
+      //  webViewBundle = new Bundle();
+      //  webView.saveState(webViewBundle);
+    //}
+}
