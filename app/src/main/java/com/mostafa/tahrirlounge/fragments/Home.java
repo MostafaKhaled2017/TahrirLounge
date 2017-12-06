@@ -1,6 +1,8 @@
 package com.mostafa.tahrirlounge.fragments;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -59,10 +61,13 @@ public class Home extends Fragment{
         youtubeIconText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction()
+               /* getFragmentManager().beginTransaction()
                         .replace(R.id.content_frame,youTube)
                         .addToBackStack(null)
-                        .commit();
+                        .commit();*/
+                Uri uri = Uri.parse("https://www.youtube.com/user/Tahrirlounge");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
         aboutUsIconText=(TextView) myView.findViewById(R.id.about_us_icon_and_text_in_home);

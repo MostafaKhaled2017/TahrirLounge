@@ -1,6 +1,8 @@
 package com.mostafa.tahrirlounge.activities;
 
 import android.app.FragmentManager;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -80,10 +82,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .addToBackStack(null)
                     .commit();
         } else if (id == R.id.nav_youtube) {
-            fragmentManager.beginTransaction()
+           /* fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,youTube)
                     .addToBackStack(null)
-                    .commit();
+                    .commit();*/
+            Uri uri = Uri.parse("https://www.youtube.com/user/Tahrirlounge");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         }else if(id==R.id.nav_about_us){
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,aboutUs)
