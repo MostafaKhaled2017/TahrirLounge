@@ -32,7 +32,7 @@ public class Twitter extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
         View mainView = (View) inflater.inflate(R.layout.fragment_twitter, container, false);//CHANGE
-        WebView webView = (WebView)mainView.findViewById(R.id.webview_twitter);//change
+        webView = (WebView)mainView.findViewById(R.id.webview_twitter);//change
         webView.getSettings().setJavaScriptEnabled(true);
         progress=new ProgressDialog(getActivity()){
             @Override
@@ -57,7 +57,7 @@ public class Twitter extends Fragment {
                     progress.dismiss();
 
             }
-            //TODO :edit te
+
             @Override
             public void onPageCommitVisible(WebView view, String url) {
                 progress.setCanceledOnTouchOutside(true);

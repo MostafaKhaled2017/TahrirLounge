@@ -21,7 +21,7 @@ import com.mostafa.tahrirlounge.activities.MainActivity;
 
 public class FacebookPage extends Fragment {
 
-    public static WebView webView;
+     WebView webView;
     ProgressDialog progress;
 
     @Override
@@ -35,7 +35,7 @@ public class FacebookPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
         View mainView = (View) inflater.inflate(R.layout.fragment_facebook_page, container, false);//CHANGE
-        WebView webView = (WebView)mainView.findViewById(R.id.webview);//change
+        webView = (WebView)mainView.findViewById(R.id.webview);//change
         webView.getSettings().setJavaScriptEnabled(true);
        /* progress = ProgressDialog.show(getActivity(), null,
                 "Loading ...", true);*/
@@ -54,7 +54,7 @@ public class FacebookPage extends Fragment {
        progress.setMessage("Loading...");
         progress.setCancelable(false);
         progress.show();
-        webView.loadUrl("https://www.facebook.com/TahrirLounge/");//CHANGE
+        webView.loadUrl("https://www.facebook.com/TahrirLounge/");//TODO :CHANGE
         webView.setWebViewClient(new WebViewClient() {
             public void onPageFinished(WebView view, String url) {
                 if (progress != null)
@@ -66,12 +66,7 @@ public class FacebookPage extends Fragment {
                 progress.setCanceledOnTouchOutside(true);
             }
         });
-        if(Build.VERSION.SDK_INT >=19){
-            webView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
-        }
-        else{
-            webView.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
-        }
+
         return mainView;
     }
 
