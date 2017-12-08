@@ -57,6 +57,7 @@ public class Twitter extends Fragment {
                     progress.dismiss();
 
             }
+            //TODO :edit te
             @Override
             public void onPageCommitVisible(WebView view, String url) {
                 progress.setCanceledOnTouchOutside(true);

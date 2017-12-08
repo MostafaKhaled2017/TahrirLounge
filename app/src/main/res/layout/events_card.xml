@@ -20,8 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
-            android:text="ورشة صناعة الواقع"
             android:textAlignment="center"
+            android:text="ورشة صناعة الواقع"
             android:textSize="15sp"
             android:textStyle="bold" />
 
