@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="#244386"
     android:scrollbars="none"
+    android:overScrollMode="ifContentScrolls"
     >
 
 <RelativeLayout

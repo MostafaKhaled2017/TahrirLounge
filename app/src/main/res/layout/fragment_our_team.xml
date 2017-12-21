@@ -8,10 +8,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/progressBar_of_our_team"
         android:layout_centerInParent="true"
+        android:overScrollMode="ifContentScrolls"
         android:visibility="visible"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/our_team_recycler_view"
         android:scrollbars="none"
+        android:overScrollMode="ifContentScrolls"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </RelativeLayout>
