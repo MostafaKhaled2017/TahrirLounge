@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.MapView;
 import com.mostafa.tahrirlounge.fragments.AboutApp;
 import com.mostafa.tahrirlounge.fragments.AboutUs;
 import com.mostafa.tahrirlounge.fragments.ContactUs;
@@ -135,7 +136,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+        //TODO :check that the code below doesn't cause runTimeExpection on android 4.0.4 and if it isn't enable it
+    /* Thread thread=new Thread(new Runnable() {
+         @Override
+         public void run() {
+             try {
+                 MapView mv = new MapView(getApplicationContext());
+                 mv.onCreate(null);
+                 mv.onPause();
+                 mv.onDestroy();
+             }catch (Exception ignored){
 
+             }
+         }
+     });
+        thread.start();*/
         return true;
     }
 
