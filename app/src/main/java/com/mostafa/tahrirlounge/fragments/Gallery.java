@@ -42,6 +42,7 @@ public class Gallery extends Fragment  {
     List<GalleryPojoClass> galleryList = new ArrayList<>();
     RecyclerView galleryRecyclerView;
     private Context mContext;
+    RequestQueue requestQueue;
     ProgressBar progress;
     List<String> galleryArrayList;
     private String mJSONURLString = "http://tahrirlounge.net/event/api/workshops";
@@ -57,7 +58,7 @@ public class Gallery extends Fragment  {
         progress = (ProgressBar) myView.findViewById(R.id.progressBar_of_gallery);
         mContext = getActivity().getApplicationContext();
         if(galleryList.size()==0){
-        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+        requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 mJSONURLString,
@@ -115,16 +116,22 @@ public class Gallery extends Fragment  {
                     }
                 }
         );
-        requestQueue.add(jsonArrayRequest);}
+        requestQueue.add(jsonArrayRequest).setTag("tag");
+        }
         else{
             GalleryAdapter adapter = new GalleryAdapter(getActivity(),galleryList);
             galleryRecyclerView.setAdapter(adapter);
             if (progress != null)
                 progress.setVisibility(View.GONE);
-            adapter.notifyDataSetChanged();
         }
 
         return myView;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(galleryRecyclerView.getAdapter()==null) requestQueue.cancelAll("tag");
     }
 }
 

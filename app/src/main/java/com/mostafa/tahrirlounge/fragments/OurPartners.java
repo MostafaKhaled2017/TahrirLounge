@@ -41,6 +41,7 @@ public class OurPartners extends Fragment{
     View myView;
     RecyclerView partnersRecyclerView;
     private Context mContext;
+    RequestQueue requestQueue;
     ProgressBar progress;
     private String mJSONURLString = "http://tahrirlounge.net/event/api/partners";
     public OurPartners() {
@@ -52,7 +53,7 @@ public class OurPartners extends Fragment{
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mContext = getActivity().getApplicationContext();
         // Initialize a new RequestQueue instance
-        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+        requestQueue = Volley.newRequestQueue(mContext);
         partnersRecyclerView= (RecyclerView) myView.findViewById(R.id.partners_recycler_view);
         partnersRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         progress = (ProgressBar) myView.findViewById(R.id.progressBar_of_partners);
@@ -109,7 +110,7 @@ public class OurPartners extends Fragment{
                         }
                     }
             );
-            requestQueue.add(jsonArrayRequest);
+            requestQueue.add(jsonArrayRequest).setTag("tag");
         }
         else{
             PartnersAdapter adapter = new PartnersAdapter(getActivity(), partnersList);
@@ -119,4 +120,9 @@ public class OurPartners extends Fragment{
     }
         return myView;
 }
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(partnersRecyclerView.getAdapter()==null) requestQueue.cancelAll("tag");
+    }
 }

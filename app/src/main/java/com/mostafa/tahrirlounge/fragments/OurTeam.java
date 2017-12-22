@@ -126,4 +126,9 @@ public class OurTeam extends Fragment{
         if(ourTeamRecyclerView.getAdapter()==null)
             ourTeamRecyclerView.setAdapter(adapter);
         return myView;
-}}
+}
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(ourTeamRecyclerView.getAdapter()==null) requestQueue.cancelAll("tag");
+    }}

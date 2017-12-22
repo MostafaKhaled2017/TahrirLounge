@@ -117,14 +117,14 @@ public class Events extends Fragment  {
                                 progress.setVisibility(View.GONE);
                             Toast.makeText(mContext, "Check your connection and try again", Toast.LENGTH_SHORT).show();
                             FragmentManager fm = getActivity().getFragmentManager();
-                            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                                for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
                                 fm.popBackStack();
                             }
                             getFragmentManager().beginTransaction().replace(R.id.content_frame, new Home()).commit();
                         }
                     }
             );
-            requestQueue.add(jsonArrayRequest);
+            requestQueue.add(jsonArrayRequest).setTag("tag");
         }
         else{
         EventsAdapter adapter = new EventsAdapter(getActivity(), eventsList);
@@ -134,6 +134,15 @@ public class Events extends Fragment  {
         }
         return myView;
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //TODO: find another way to solve the crash in the 4 volley requests
+        if(eventsRecyclerView.getAdapter()==null) requestQueue.cancelAll("tag");
+
+    //TODO :load data on create of the application on welcome screen activity
+}}
 
    /* @Override
     public void onRefresh() {
@@ -194,4 +203,3 @@ public class Events extends Fragment  {
      if(swipeRefreshLayout.isRefreshing())
          swipeRefreshLayout.setRefreshing(false);
     }*/
-}
