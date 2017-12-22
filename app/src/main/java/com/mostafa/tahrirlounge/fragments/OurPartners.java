@@ -65,6 +65,8 @@ public class OurPartners extends Fragment{
                     new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
+                            if(partnersList!=null)
+                                partnersList.clear();
                             try {
                                 // Loop through the array elements
                                 for (int i = 0; i < response.length(); i++) {

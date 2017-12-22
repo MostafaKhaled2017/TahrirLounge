@@ -65,6 +65,8 @@ public class Gallery extends Fragment  {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        if(galleryList!=null)
+                            galleryList.clear();
                         Log.v("Logging","response is :" + response.toString());
                         try {
                             // Loop through the array elements
@@ -124,6 +126,5 @@ public class Gallery extends Fragment  {
 
         return myView;
     }
-
-  }
+}
 

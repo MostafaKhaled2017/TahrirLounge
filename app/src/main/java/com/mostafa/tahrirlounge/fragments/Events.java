@@ -76,6 +76,8 @@ public class Events extends Fragment  {
                     new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
+                            if(eventsList!=null)
+                                eventsList.clear();
                             try {
                                 // Loop through the array elements
                                 for (int i = 0; i < response.length(); i++) {
@@ -129,7 +131,7 @@ public class Events extends Fragment  {
         eventsRecyclerView.setAdapter(adapter);
             if (progress != null)
                 progress.setVisibility(View.GONE);
-        adapter.notifyDataSetChanged();}
+        }
         return myView;
     }
 

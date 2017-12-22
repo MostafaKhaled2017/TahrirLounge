@@ -42,9 +42,11 @@ import java.util.List;
 public class OurTeam extends Fragment{
     List<TeamMemberPojoClass> teamMembersList = new ArrayList<>();
     View myView;
+    RequestQueue requestQueue;
     CardView mCardView;
     RecyclerView ourTeamRecyclerView;
     private Context mContext;
+    TeamMembersAdapter adapter;
     ProgressBar progress;
     private String url = "http://tahrirlounge.net/event/api/getAllTeamMembers";//TODO : make class for urls
     @Nullable
@@ -60,10 +62,8 @@ public class OurTeam extends Fragment{
         mContext = getActivity().getApplicationContext();
         // Initialize a new RequestQueue instance
         if(teamMembersList.size()==0){
-        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-        if(teamMembersList!=null){
-            teamMembersList.clear();
-        }
+            Log.v("Loging","team members List size is : " + teamMembersList.size());
+        requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 url,
@@ -71,6 +71,8 @@ public class OurTeam extends Fragment{
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        if (teamMembersList != null)
+                            teamMembersList.clear();
                         try {
                             // Loop through the array elements
                             for (int i = 0; i < response.length(); i++) {
@@ -92,8 +94,6 @@ public class OurTeam extends Fragment{
                             }
                             Log.v("Logging","teamMembers list is :"+teamMembersList);
                             Log.v("Logging","list size is : "+teamMembersList.size());
-                            TeamMembersAdapter adapter = new TeamMembersAdapter(getActivity(),teamMembersList);
-                            ourTeamRecyclerView.setAdapter(adapter);
                             if (progress != null)
                                 progress.setVisibility(View.GONE);
                             adapter.notifyDataSetChanged();
@@ -118,15 +118,12 @@ public class OurTeam extends Fragment{
                         getFragmentManager().beginTransaction().replace(R.id.content_frame,new Home()).commit();
                     }
                 });
-        requestQueue.add(jsonArrayRequest);}
+                requestQueue.add(jsonArrayRequest).setTag("tag");}
         else{
-            TeamMembersAdapter adapter = new TeamMembersAdapter(getActivity(),teamMembersList);
-
+        if (progress != null)
+            progress.setVisibility(View.GONE);}
+        adapter = new TeamMembersAdapter(getActivity(),teamMembersList);
+        if(ourTeamRecyclerView.getAdapter()==null)
             ourTeamRecyclerView.setAdapter(adapter);
-            if (progress != null)
-                progress.setVisibility(View.GONE);
-            adapter.notifyDataSetChanged();
-        }
         return myView;
-}
-}
+}}
