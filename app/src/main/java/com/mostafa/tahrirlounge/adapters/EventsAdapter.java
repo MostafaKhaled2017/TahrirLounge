@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.mostafa.tahrirlounge.fragments.EventDetails;
 import com.mostafa.tahrirlounge.pojoClasses.EventPojoClass;
 import com.mostafa.tahrirlounge.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -39,7 +40,10 @@ private List<EventPojoClass> eventsList;
         holder.eventDate.append(event.getEventDate());
         holder.eventDetails.setText(event.getEventDetails());
         holder.instructorName.append(event.getEventInstractor());
-        Glide.with(holder.eventImage.getContext()).load(event.getEventImage()).placeholder(R.drawable.image_background).into(holder.eventImage);
+        Picasso.with(mContext)
+                .load(event.getEventImage())
+                .placeholder(R.drawable.image_background)
+                .into(holder.eventImage);
         holder.seeMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

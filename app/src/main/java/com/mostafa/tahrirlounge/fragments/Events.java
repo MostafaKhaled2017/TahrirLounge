@@ -115,6 +115,20 @@ public class Events extends Fragment  {
                         public void onErrorResponse(VolleyError error) {
                             if (progress != null)
                                 progress.setVisibility(View.GONE);
+                           /* String message = null;
+                            if (error instanceof NetworkError) {
+                                message = "Cannot connect to Internet...Please check your connection!";
+                            } else if (error instanceof ServerError) {
+                                message = "The server could not be found. Please try again after some time!!";
+                            } else if (error instanceof AuthFailureError) {
+                                message = "Cannot connect to Internet...Please check your connection!";
+                            } else if (error instanceof ParseError) {
+                                message = "Parsing error! Please try again after some time!!";
+                            } else if (error instanceof NoConnectionError) {
+                                message = "Cannot connect to Internet...Please check your connection!";
+                            } else if (error instanceof TimeoutError) {
+                                message = "Connection TimeOut! Please check your internet connection.";
+                            }*/
                             Toast.makeText(mContext, "Check your connection and try again", Toast.LENGTH_SHORT).show();
                             FragmentManager fm = getActivity().getFragmentManager();
                                 for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {

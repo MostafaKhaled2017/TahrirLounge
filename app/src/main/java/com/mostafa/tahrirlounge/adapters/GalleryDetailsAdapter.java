@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.mostafa.tahrirlounge.R;
 import com.mostafa.tahrirlounge.fragments.GalleryImage;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class GalleryDetailsAdapter extends RecyclerView.Adapter<GalleryDetailsAd
     public void onBindViewHolder(GalleryViewHolder holder, int position) {
         final String galleryImage = galleryDetailsList.get(position);
         Log.v("Logging","gallery image is " +galleryImage);
-        Glide.with(mContext)
+        Picasso.with(mContext)
                 .load(galleryImage)
                 .placeholder(R.drawable.image_background)
                 .into(holder.mainImage);

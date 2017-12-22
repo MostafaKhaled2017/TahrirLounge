@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.mostafa.tahrirlounge.R;
 import com.mostafa.tahrirlounge.pojoClasses.GalleryPojoClass;
 import com.mostafa.tahrirlounge.fragments.GalleryDetails;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,10 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
         }
         holder.name.setText(subName + "...");
         String mainImage=album.getGallery().get(0);
-        Glide.with(mContext).load(mainImage).placeholder(R.drawable.image_background).into(holder.image);
+        Picasso.with(mContext)
+                .load(mainImage)
+                .placeholder(R.drawable.image_background)
+                .into(holder.image);
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
