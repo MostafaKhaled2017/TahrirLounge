@@ -40,6 +40,8 @@ public class FacebookPage extends Fragment {
         webView.getSettings().setJavaScriptEnabled(true);
        /* progress = ProgressDialog.show(getActivity(), null,
                 "Loading ...", true);*/
+       //TODO :return youtube and find a way to stop sound
+        //TODO :replace the current webView from the advanced webView from github if it can
        progress=new ProgressDialog(getActivity()){
            @Override
            public void onBackPressed() {
