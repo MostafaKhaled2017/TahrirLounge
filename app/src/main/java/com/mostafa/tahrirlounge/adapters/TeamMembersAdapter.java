@@ -37,10 +37,14 @@ private List<TeamMemberPojoClass> teamMembersList;
         final TeamMemberPojoClass teamMember = teamMembersList.get(position);
         holder.memberName.setText(teamMember.getName());
         holder.memberPosition.setText(teamMember.getPosition());
-        Picasso.with(holder.memberImage.getContext())
+        /*Picasso.with(mContext)
                 .load(teamMember.getImage())
+                .placeholder(R.drawable.image_background)
                 .resize(150,150)
                 .centerCrop()
+                .into(holder.memberImage);*/
+        Picasso.with(mContext)
+                .load(teamMember.getImage())
                 .placeholder(R.drawable.image_background)
                 .into(holder.memberImage);
         Log.w("Logging","image link is : " + teamMember.getImage());
