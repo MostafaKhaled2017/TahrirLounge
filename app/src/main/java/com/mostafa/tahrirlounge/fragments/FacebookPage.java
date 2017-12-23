@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ public class FacebookPage extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
     }
-
+//TODO : move from one drive and upload on github or other private
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -66,7 +67,17 @@ public class FacebookPage extends Fragment {
                 progress.setCanceledOnTouchOutside(true);
             }
         });
+        webView.setOnKeyListener( new View.OnKeyListener() {
+            @Override
+            public boolean onKey( View v, int keyCode, KeyEvent event ) {
+                if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
+                    webView.goBack();
+                    return true;
+                }
 
+                return false;
+            }
+        });
         return mainView;
     }
 

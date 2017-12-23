@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,17 @@ public class Twitter extends Fragment {
             @Override
             public void onPageCommitVisible(WebView view, String url) {
                 progress.setCanceledOnTouchOutside(true);
+            }
+        });
+        webView.setOnKeyListener( new View.OnKeyListener() {
+            @Override
+            public boolean onKey( View v, int keyCode, KeyEvent event ) {
+                if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
+                    webView.goBack();
+                    return true;
+                }
+
+                return false;
             }
         });
         return mainView;
