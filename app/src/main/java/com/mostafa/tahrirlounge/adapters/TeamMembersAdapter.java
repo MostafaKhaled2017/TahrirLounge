@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.mostafa.tahrirlounge.CircleTransform;
 import com.mostafa.tahrirlounge.R;
 import com.mostafa.tahrirlounge.pojoClasses.TeamMemberPojoClass;
 import com.squareup.picasso.Picasso;
@@ -45,6 +46,7 @@ private List<TeamMemberPojoClass> teamMembersList;
                 .into(holder.memberImage);*/
         Picasso.with(mContext)
                 .load(teamMember.getImage())
+                .transform(new CircleTransform())
                 .placeholder(R.drawable.image_background)
                 .into(holder.memberImage);
         Log.w("Logging","image link is : " + teamMember.getImage());
@@ -61,13 +63,13 @@ private List<TeamMemberPojoClass> teamMembersList;
     class OurTeamViewHolder extends RecyclerView.ViewHolder{
         CardView ourTeamCard;
         TextView memberName, memberPosition;
-        CircleImageView memberImage;
+        ImageView memberImage;
         OurTeamViewHolder(View itemView) {
             super(itemView);
             ourTeamCard =(CardView) itemView.findViewById(R.id.our_team_card_view) ;
             memberName = (TextView) itemView.findViewById(R.id.team_member_name);
             memberPosition =(TextView) itemView.findViewById(R.id.team_member_position);
-            memberImage =(CircleImageView) itemView.findViewById(R.id.team_member_image);
+            memberImage =(ImageView) itemView.findViewById(R.id.team_member_image);
         }
 
     }

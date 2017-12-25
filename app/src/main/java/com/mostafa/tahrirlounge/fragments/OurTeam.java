@@ -96,7 +96,8 @@ public class OurTeam extends Fragment{
                             Log.v("Logging","list size is : "+teamMembersList.size());
                             if (progress != null)
                                 progress.setVisibility(View.GONE);
-                            adapter.notifyDataSetChanged();
+                            adapter = new TeamMembersAdapter(getActivity(),teamMembersList);
+                            ourTeamRecyclerView.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             if (progress != null)
@@ -121,10 +122,10 @@ public class OurTeam extends Fragment{
                 requestQueue.add(jsonArrayRequest).setTag("tag");}
         else{
         if (progress != null)
-            progress.setVisibility(View.GONE);}
+            progress.setVisibility(View.GONE);
         adapter = new TeamMembersAdapter(getActivity(),teamMembersList);
-        if(ourTeamRecyclerView.getAdapter()==null)
-            ourTeamRecyclerView.setAdapter(adapter);
+        ourTeamRecyclerView.setAdapter(adapter);
+        }
         return myView;
 }
     @Override

@@ -52,7 +52,7 @@ public class Events extends Fragment  {
 
     public Events() {
     }
-
+//TODO :optimize code
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {

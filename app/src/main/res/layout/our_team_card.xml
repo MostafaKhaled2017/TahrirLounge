@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:background="@color/background_color_of_cards_in_contact_us_and_events">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/team_member_image"
             android:layout_width="150dp"
             android:layout_height="150dp"
