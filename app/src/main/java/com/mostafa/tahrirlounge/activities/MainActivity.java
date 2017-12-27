@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Gallery gallery=new Gallery();
     Home home=new Home();
     AboutApp aboutApp=new AboutApp();
-
-
+    //TODO:solve the problem of loading fragment multiple times when click more than one time on an item in the navigation drawer
+    //TODO :send the above objects with a bundle to the home fragment to avoid multiple loading
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
