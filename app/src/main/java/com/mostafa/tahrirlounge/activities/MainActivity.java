@@ -153,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         thread.start();*/
         return true;
     }
+//TODO : search for the reason of the increasing size of the app
 //TODO :Add place holder to our team image
     @Override
     protected void onStart() {
