@@ -54,7 +54,7 @@ public class Gallery extends Fragment  {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.fragment_gallery, container, false);
         galleryRecyclerView = (RecyclerView) myView.findViewById(R.id.gallery_recycler_view);
-        galleryRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));//TODO : autofit the number of col.
+        galleryRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));//TODO : autofit the number of col.
         progress = (ProgressBar) myView.findViewById(R.id.progressBar_of_gallery);
         mContext = getActivity().getApplicationContext();
         if(galleryList.size()==0){
