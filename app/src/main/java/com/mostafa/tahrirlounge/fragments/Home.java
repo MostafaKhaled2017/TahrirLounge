@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.mostafa.tahrirlounge.LogInDialogue;
 import com.mostafa.tahrirlounge.R;
 
 /**
@@ -40,10 +41,13 @@ public class Home extends Fragment{
         facebookIconText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction()
+               /* getFragmentManager().beginTransaction()
                         .replace(R.id.content_frame,facebookPage)
                         .addToBackStack(null)
-                        .commit();
+                        .commit();*/
+                Uri uri = Uri.parse("https://www.facebook.com/TahrirLounge/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
 
@@ -51,10 +55,13 @@ public class Home extends Fragment{
         twitterIconText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction()
+                /*getFragmentManager().beginTransaction()
                         .replace(R.id.content_frame,twitter)
                         .addToBackStack(null)
-                        .commit();
+                        .commit();*/
+                Uri uri = Uri.parse("https://twitter.com/tahrirlounge");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
         youtubeIconText = (TextView) myView.findViewById(R.id.youtube_icon_and_text_in_home);
