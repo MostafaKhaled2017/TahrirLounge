@@ -2,6 +2,9 @@ package com.mostafa.tahrirlounge.activities;
 
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,9 +13,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 
-import com.google.android.gms.maps.MapView;
+
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
 import com.mostafa.tahrirlounge.fragments.AboutApp;
 import com.mostafa.tahrirlounge.fragments.AboutUs;
 import com.mostafa.tahrirlounge.fragments.ContactUs;
@@ -73,15 +80,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         android.app.FragmentManager fragmentManager= getFragmentManager();
         if (id == R.id.nav_facebook_page) {
-            fragmentManager.beginTransaction()
+            /*fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,facebookPage)
                     .addToBackStack(null)
-                    .commit();
+                    .commit();*/
+            Uri uri = Uri.parse("https://www.facebook.com/TahrirLounge/");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         } else if (id == R.id.nav_twitter) {
-            fragmentManager.beginTransaction()
+           /* fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,twitter)
                     .addToBackStack(null)
-                    .commit();
+                    .commit();*/
+            Uri uri = Uri.parse("https://twitter.com/tahrirlounge");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         } else if (id == R.id.nav_youtube) {
            /* fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,youTube)
