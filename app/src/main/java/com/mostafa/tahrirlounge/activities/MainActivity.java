@@ -8,6 +8,7 @@ import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,8 +19,6 @@ import android.util.Log;
 import android.view.MenuItem;
 
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
 import com.mostafa.tahrirlounge.fragments.AboutApp;
 import com.mostafa.tahrirlounge.fragments.AboutUs;
 import com.mostafa.tahrirlounge.fragments.ContactUs;
@@ -33,6 +32,8 @@ import com.mostafa.tahrirlounge.R;
 import com.mostafa.tahrirlounge.fragments.Twitter;
 import com.mostafa.tahrirlounge.fragments.YouTube;
 
+import java.io.Serializable;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
     FacebookPage facebookPage=new FacebookPage();
     Twitter twitter =new Twitter();
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Gallery gallery=new Gallery();
     Home home=new Home();
     AboutApp aboutApp=new AboutApp();
+    private static final String key="key";
     //TODO:solve the problem of loading fragment multiple times when click more than one time on an item in the navigation drawer
     //TODO :send the above objects with a bundle to the home fragment to avoid multiple loading
     @Override
@@ -53,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -61,18 +62,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setItemIconTintList(null);
-            getFragmentManager().beginTransaction().replace(R.id.content_frame, home).commit();
+        navigationView.setItemIconTintList(null);//TODO :try to optimize
+        facebookPage.passData(home);
+        events.passData(home);
+        gallery.passData(home);
+        ourPartners.passData(home);
+        ourTeam.passData(home);
+        twitter.passData(home);
+        youTube.passData(home);
+
+        home.passData(events,aboutUs,contactUs,ourTeam,ourPartners,gallery);
+            getFragmentManager().beginTransaction().replace(R.id.content_frame, home,"home").commit();
     }
 
     @Override
     public void onBackPressed() {
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            int stackCount =getFragmentManager().getBackStackEntryCount();
+            android.app.Fragment f=getFragmentManager().findFragmentById(R.id.content_frame);
             if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
-            } else {
+            drawer.closeDrawer(GravityCompat.START);
+        }
+            else if(f instanceof Home){
                 super.onBackPressed();
             }
+           else if(stackCount==0){
+                getFragmentManager().popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                getFragmentManager().beginTransaction().replace(R.id.content_frame, home,"home").commit();            }
+            else {
+            super.onBackPressed();
+            }
+
     }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -106,32 +126,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if(id==R.id.nav_about_us){
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,aboutUs)
-                    .addToBackStack(null)
                     .commit();
         }else if(id==R.id.nav_our_partners){
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,ourPartners)
-                    .addToBackStack(null)
                     .commit();
         }else if(id==R.id.nav_our_team){
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,ourTeam)
-                    .addToBackStack(null)
                     .commit();
         }else if(id==R.id.nav_events){
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,events)
-                    .addToBackStack(null)
                     .commit();
         }else if(id==R.id.nav_contact_us){
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,contactUs)
-                    .addToBackStack(null)
                     .commit();
         }else if(id==R.id.nav_gallery){
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,gallery)
-                    .addToBackStack(null)
                     .commit();
         }else if(id==R.id.nav_home){
             FragmentManager fm = this.getFragmentManager();
@@ -139,12 +153,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fm.popBackStack();
             }
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame,home)
+                    .replace(R.id.content_frame,home,"home")
                     .commit();
         }else if(id==R.id.nav_about_app){
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,aboutApp)
-                    .addToBackStack(null)
                     .commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -166,7 +179,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         thread.start();*/
         return true;
     }
-//TODO : search for the reason of the increasing size of the app
+
+    //TODO : search for the reason of the increasing size of the app
 //TODO :Add place holder to our team image
     @Override
     protected void onStart() {

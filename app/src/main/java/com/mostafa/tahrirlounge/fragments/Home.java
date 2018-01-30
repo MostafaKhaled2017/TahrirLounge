@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.view.LayoutInflater;
@@ -32,6 +33,15 @@ public class Home extends Fragment{
     OurPartners ourPartners=new OurPartners();
     Gallery gallery=new Gallery();
     NavigationView navigationView;
+    public void passData(Events events2,AboutUs aboutUs2,ContactUs contactUs2,OurTeam ourTeam2,OurPartners ourPartners2,Gallery gallery2){
+        events=events2;
+        aboutUs=aboutUs2;
+        contactUs=contactUs2;
+        ourTeam=ourTeam2;
+        ourPartners=ourPartners2;
+        gallery=gallery2;
+                //TODO :thik in edit the initialization of variabales
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -83,7 +93,6 @@ public class Home extends Fragment{
             public void onClick(View v) {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.content_frame,aboutUs)
-                        .addToBackStack(null)
                         .commit();
             }
         });
@@ -93,7 +102,6 @@ public class Home extends Fragment{
             public void onClick(View v) {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.content_frame,contactUs)
-                        .addToBackStack(null)
                         .commit();
             }
         });
@@ -103,7 +111,6 @@ public class Home extends Fragment{
             public void onClick(View v) {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.content_frame,ourTeam)
-                        .addToBackStack(null)
                         .commit();
             }
         });
@@ -113,7 +120,6 @@ public class Home extends Fragment{
             public void onClick(View v) {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.content_frame,ourPartners)
-                        .addToBackStack(null)
                         .commit();
             }
         });
@@ -123,7 +129,6 @@ public class Home extends Fragment{
             public void onClick(View v) {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.content_frame,events)
-                        .addToBackStack(null)
                         .commit();
             }
         });
@@ -133,10 +138,10 @@ public class Home extends Fragment{
             public void onClick(View v) {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.content_frame,gallery)
-                        .addToBackStack(null)
                         .commit();
             }
         });
         return myView;
     }
+
 }

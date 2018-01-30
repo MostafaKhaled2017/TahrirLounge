@@ -15,9 +15,12 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
@@ -43,9 +46,11 @@ public class OurPartners extends Fragment{
     private Context mContext;
     RequestQueue requestQueue;
     ProgressBar progress;
+    Home home;
     private String mJSONURLString = "http://tahrirlounge.net/event/api/partners";
     public OurPartners() {
     }
+    public void passData(Home home1){home=home1;}
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -101,12 +106,20 @@ public class OurPartners extends Fragment{
                         public void onErrorResponse(VolleyError error) {
                             if (progress != null)
                                 progress.setVisibility(View.GONE);
-                            Toast.makeText(mContext, "Check your connection and try again", Toast.LENGTH_SHORT).show();
+                            String message = "check your connection and try again";
+                            if (error instanceof ServerError) {
+                                message = "The server could not be found. Please try again after some time!!";
+                            } else if (error instanceof ParseError) {
+                                message = "Parsing error! Please try again after some time!!";
+                            } else if (error instanceof TimeoutError) {
+                                message = "Connection TimeOut! Please check your internet connection.";
+                            }
+                            Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
                             FragmentManager fm = getActivity().getFragmentManager();
                             for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
                                 fm.popBackStack();
                             }
-                            getFragmentManager().beginTransaction().replace(R.id.content_frame, new Home()).commit();
+                            getFragmentManager().beginTransaction().replace(R.id.content_frame, home,"home").commit();
                         }
                     }
             );

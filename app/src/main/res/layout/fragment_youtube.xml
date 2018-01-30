@@ -10,6 +10,7 @@
         android:layout_height="fill_parent"
         />
     <ProgressBar
+        android:indeterminate="true"
         android:id="@+id/progressBar_youtube"
         style="?android:attr/progressBarStyle"
         android:layout_width="50dp"

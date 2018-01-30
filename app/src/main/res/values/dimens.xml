@@ -17,8 +17,8 @@
     <dimen name="text_size_in_home">15sp</dimen>
     <dimen name="margin_left_of_text_in_home">20dp</dimen>
     <dimen name="margin_top_between_icons">45dp</dimen>
-    <dimen name="margin_top_of_contact_us">18dp</dimen>
-    <dimen name="text_size_of_contact_us">19sp</dimen>
+    <dimen name="margin_top_of_contact_us">17dp</dimen>
+    <dimen name="text_size_of_contact_us">20sp</dimen>
     <dimen name="margin_top_of_position_in_our_team">10dp</dimen>
     <dimen name="card_height_in_our_team">150dp</dimen>
     <dimen name="margin_top_of_text_view_in_home">45dp</dimen>

@@ -29,7 +29,6 @@ public class EventDetails extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -57,11 +56,6 @@ public class EventDetails extends Fragment {
             instructor_name.setTypeface(custom_font);
             Glide.with(getActivity()).load(eventImage).placeholder(R.drawable.image_background).into(event_image);
         }else{
-            FragmentManager fm = getActivity().getFragmentManager();
-            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
-                fm.popBackStack();
-            }
-            getFragmentManager().beginTransaction().replace(R.id.content_frame,new Home()).commit();
             Toast.makeText(getActivity(), "Error occured", Toast.LENGTH_SHORT).show();
         }
         return myView;

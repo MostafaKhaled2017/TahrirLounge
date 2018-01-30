@@ -7,8 +7,8 @@ android {
         applicationId "net.tahrirlounge"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 10008
-        versionName "1.0.08"
+        versionCode 10009
+        versionName "1.0.09"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -34,5 +34,12 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.8.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.android.gms:play-services-maps:11.0.4'
+
+   /* compile( ['com.fasterxml.jackson.core:jackson-databind:2.9.4'],
+     ['com.fasterxml.jackson.core:jackson-core:2.9.4'],
+     ['com.fasterxml.jackson.core:jackson-annotations:2.9.4']
+    )*/
+    //compile 'com.facebook.android:facebook-android-sdk:4.26.0'
+    //compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     testCompile 'junit:junit:4.12'
 }

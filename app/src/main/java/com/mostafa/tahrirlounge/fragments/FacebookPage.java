@@ -24,7 +24,9 @@ public class FacebookPage extends Fragment {
 
      WebView webView;
     ProgressDialog progress;
+    Home home;
 
+    public void passData(Home home1){home=home1;}
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class FacebookPage extends Fragment {
                for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
                    fm.popBackStack();
                }
-               getFragmentManager().beginTransaction().replace(R.id.content_frame, new Home()).commit();
+               getFragmentManager().beginTransaction().replace(R.id.content_frame, home,"home").commit();
            }
        };
        progress.setMessage("Loading...");

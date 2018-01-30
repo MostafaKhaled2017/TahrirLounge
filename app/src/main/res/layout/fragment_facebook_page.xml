@@ -11,6 +11,7 @@
         android:scrollbars="none">
     </WebView>
     <ProgressBar
+        android:indeterminate="true"
         android:id="@+id/progressBar_facebook_page"
         style="?android:attr/progressBarStyle"
         android:layout_width="50dp"

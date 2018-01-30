@@ -3,6 +3,7 @@ package com.mostafa.tahrirlounge.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,7 +24,6 @@ import java.util.List;
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder> {
     private List<GalleryPojoClass> galleryList=new ArrayList<>();
     private Context mContext;
-    String subName;
     public GalleryAdapter(Context context, List<GalleryPojoClass> galleryList){
         this.mContext=context;
         this.galleryList=galleryList;
@@ -37,19 +37,13 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
     @Override
     public void onBindViewHolder(GalleryViewHolder holder, int position) {
         final GalleryPojoClass album = galleryList.get(position);
-        if(album.getName().length()>15) {
-            subName = album.getName().substring(0, 14);
-        }
-        else{
-            subName=album.getName();
-        }
-        holder.name.setText(subName + "...");
+        holder.name.setText(album.getName());
         String mainImage=album.getGallery().get(0);
         Picasso.with(mContext)
                 .load(mainImage)
                 .placeholder(R.drawable.image_background)
                 .into(holder.image);
-        holder.image.setOnClickListener(new View.OnClickListener() {
+        holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle galleryData=new Bundle();
@@ -76,8 +70,10 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
     class GalleryViewHolder extends RecyclerView.ViewHolder{
         TextView name;
         ImageView image;
+        CardView card;
         public GalleryViewHolder(View itemView) {
             super(itemView);
+            card=(CardView) itemView.findViewById(R.id.card_view_of_gallery);
             name= (TextView) itemView.findViewById(R.id.gallery_item_info);
            image=(ImageView) itemView.findViewById(R.id.gallery_item_image);
         }
